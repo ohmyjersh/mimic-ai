@@ -1,0 +1,5 @@
+[book]
+authors = ["mimic contributors"]
+language = "en"
+src = "src"
+title = "mimic — Composable Persona Prompts"

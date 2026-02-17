@@ -1,0 +1,21 @@
+# Summary
+
+[Introduction](introduction.md)
+
+- [Quickstart](quickstart.md)
+- [Fragments](fragments/overview.md)
+  - [Personas](fragments/personas.md)
+  - [Skills](fragments/skills.md)
+  - [Contexts](fragments/contexts.md)
+  - [Tones](fragments/tones.md)
+  - [Constraints](fragments/constraints.md)
+- [Recommend](recommend.md)
+- [Resolve](resolve.md)
+- [Linting](linting.md)
+- [Editor Setup]()
+  - [Claude Code](editors/claude-code.md)
+  - [Codex CLI](editors/codex-cli.md)
+  - [Gemini CLI](editors/gemini-cli.md)
+  - [Cursor](editors/cursor.md)
+  - [VS Code](editors/vscode.md)
+- [Contributing](contributing.md)

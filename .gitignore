@@ -1,0 +1,22 @@
+# Rust
+/target
+Cargo.lock
+
+# VS Code extension
+extensions/vscode/out/
+extensions/vscode/node_modules/
+extensions/vscode/*.vsix
+
+# mdBook
+docs/book/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
