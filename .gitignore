@@ -20,3 +20,11 @@ Thumbs.db
 *~
 .idea/
 .vscode/
+
+# Secrets & certificates
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
