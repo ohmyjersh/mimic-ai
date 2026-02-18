@@ -48,7 +48,7 @@ Clone and build:
 
 ```sh
 git clone https://github.com/ohmyjersh/mimic-ai.git
-cd mimic
+cd mimic-ai
 cargo build
 ```
 

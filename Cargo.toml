@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "Composable persona prompts for any LLM — an MCP server"
 license = "MIT"
-repository = "https://github.com/ohmyjersh/mimic"
+repository = "https://github.com/ohmyjersh/mimic-ai"
 
 [lib]
 name = "mimic_ai"

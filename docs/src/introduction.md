@@ -20,11 +20,12 @@ Each fragment is a standalone markdown file. mimic composes them into a single s
 
 ## How it works
 
-mimic exposes four MCP tools:
+mimic exposes five MCP tools:
 
 - `recommend` -- takes a persona name and returns a flat, categorized list of available skills, contexts, tones, and constraints. Use this first to see what's available.
 - `compose` -- takes a persona plus optional skills, contexts, tones, and constraints, and returns a complete system prompt.
 - `list` -- returns all available fragments, optionally filtered by category, tag, or group.
+- `check_update` -- checks if a newer version of mimic is available. Returns current version, latest version, and whether an update is available.
 - `resolve` -- advanced: returns a raw graph of fragment relationships. Most clients should use `recommend` instead.
 
 The MCP client (your editor) calls these tools. The LLM decides which fragments to use based on your conversation, or you can specify them explicitly.

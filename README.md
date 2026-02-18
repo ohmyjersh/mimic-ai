@@ -155,7 +155,7 @@ Add to `.cursor/mcp.json` or VS Code MCP settings:
 codex mcp add mimic -- mimic
 ```
 
-See the [full documentation](https://github.com/ohmyjersh/mimic-ai/docs) for more editor setup guides.
+See the [full documentation](https://github.com/ohmyjersh/mimic-ai/tree/main/docs) for more editor setup guides.
 
 ## Custom Fragments
 
