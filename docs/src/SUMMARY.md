@@ -12,6 +12,7 @@
 - [Recommend](recommend.md)
 - [Resolve](resolve.md)
 - [Linting](linting.md)
+- [Prompt Studio](prompt-studio.md)
 - [Editor Setup]()
   - [Claude Code](editors/claude-code.md)
   - [Codex CLI](editors/codex-cli.md)

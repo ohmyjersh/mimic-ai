@@ -7,7 +7,7 @@
   "engines": {
     "vscode": "^1.85.0"
   },
-"categories": [
+  "categories": [
     "Other"
   ],
   "main": "./out/extension.js",
@@ -16,7 +16,10 @@
     "onCommand:mimic.list",
     "onCommand:mimic.recommend",
     "onCommand:mimic.resolve",
-    "onCommand:mimic.checkUpdate"
+    "onCommand:mimic.checkUpdate",
+    "onCommand:mimic.openStudio",
+    "onView:mimicFragments",
+    "onView:mimicTemplates"
   ],
   "contributes": {
     "commands": [
@@ -39,8 +42,33 @@
       {
         "command": "mimic.checkUpdate",
         "title": "mimic: Check for Updates"
+      },
+      {
+        "command": "mimic.openStudio",
+        "title": "mimic: Open Prompt Studio"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mimic",
+          "title": "Mimic",
+          "icon": "media/mimic-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mimic": [
+        {
+          "id": "mimicFragments",
+          "name": "Fragments"
+        },
+        {
+          "id": "mimicTemplates",
+          "name": "Templates"
+        }
+      ]
+    },
     "configuration": {
       "title": "Mimic",
       "properties": {
@@ -58,12 +86,26 @@
     }
   },
   "scripts": {
-    "compile": "tsc",
-    "watch": "tsc -w"
+    "compile": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "dev": "cd ../.. && cargo build && cd extensions/vscode && node esbuild.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20.0.0",
-    "typescript": "^5.3.0"
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.24.0",
+    "jsdom": "^28.1.0",
+    "typescript": "^5.3.0",
+    "vitest": "^4.0.18"
   }
 }
