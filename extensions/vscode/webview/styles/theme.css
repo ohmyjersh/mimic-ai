@@ -1,0 +1,33 @@
+:root {
+  --studio-bg: var(--vscode-editor-background);
+  --studio-fg: var(--vscode-editor-foreground);
+  --studio-border: var(--vscode-panel-border, var(--vscode-editorGroup-border));
+  --studio-card-bg: var(--vscode-editorWidget-background, var(--vscode-sideBar-background));
+  --studio-card-border: var(--vscode-editorWidget-border, transparent);
+  --studio-card-hover: var(--vscode-list-hoverBackground);
+  --studio-card-selected-border: var(--vscode-focusBorder);
+  --studio-chip-bg: var(--vscode-button-secondaryBackground);
+  --studio-chip-fg: var(--vscode-button-secondaryForeground);
+  --studio-chip-hover: var(--vscode-button-secondaryHoverBackground);
+  --studio-chip-selected-bg: var(--vscode-button-background);
+  --studio-chip-selected-fg: var(--vscode-button-foreground);
+  --studio-badge-bg: var(--vscode-badge-background);
+  --studio-badge-fg: var(--vscode-badge-foreground);
+  --studio-muted: var(--vscode-descriptionForeground);
+  --studio-link: var(--vscode-textLink-foreground);
+  --studio-input-bg: var(--vscode-input-background);
+  --studio-input-fg: var(--vscode-input-foreground);
+  --studio-input-border: var(--vscode-input-border, transparent);
+  --studio-scrollbar: var(--vscode-scrollbarSlider-background);
+  --studio-scrollbar-hover: var(--vscode-scrollbarSlider-hoverBackground);
+  --studio-error: var(--vscode-errorForeground);
+  --studio-success: var(--vscode-testing-iconPassed, #4caf50);
+  --studio-warning: var(--vscode-editorWarning-foreground, #ff9800);
+
+  /* Category colors */
+  --cat-persona: var(--vscode-charts-blue, #4fc1ff);
+  --cat-skill: var(--vscode-charts-green, #89d185);
+  --cat-context: var(--vscode-charts-yellow, #cca700);
+  --cat-tone: var(--vscode-charts-purple, #b180d7);
+  --cat-constraint: var(--vscode-charts-red, #f48771);
+}
