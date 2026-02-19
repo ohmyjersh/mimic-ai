@@ -1,4 +1,4 @@
-name: Prompt Injection Scanner
+name: Prompt Guard
 
 on:
   pull_request:
@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     inputs:
       scan_all:
-        description: "Scan all prompt files (not just changed ones)"
+        description: "Scan all prompt files"
         required: false
-        default: "false"
+        default: "true"
         type: boolean
 
 permissions:
@@ -22,53 +22,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - name: Detect changed prompt files
-        if: github.event_name == 'pull_request'
-        id: changed
-        uses: tj-actions/changed-files@v44
-        with:
-          files: "defaults/**/*.md"
-
-      - name: Early exit if no prompt files changed
-        if: github.event_name == 'pull_request' && steps.changed.outputs.any_changed != 'true'
-        run: echo "No prompt files changed — skipping scan."
-
-      - name: Setup Python
-        if: github.event_name == 'workflow_dispatch' || steps.changed.outputs.any_changed == 'true'
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Cache HuggingFace model
-        if: github.event_name == 'workflow_dispatch' || steps.changed.outputs.any_changed == 'true'
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
           key: huggingface-prompt-guard-86m-v1
 
       - name: Install dependencies
-        if: github.event_name == 'workflow_dispatch' || steps.changed.outputs.any_changed == 'true'
         run: pip install -r scripts/requirements-ci.txt
 
-      - name: Run prompt guard scanner
-        if: github.event_name == 'workflow_dispatch' || steps.changed.outputs.any_changed == 'true'
-        run: |
-          if [[ "${{ inputs.scan_all }}" == "true" || "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.scan_all }}" == "true" ]]; then
-            python scripts/prompt_guard_scanner.py --scan-all
-          else
-            python scripts/prompt_guard_scanner.py ${{ steps.changed.outputs.all_changed_files }}
-          fi
+      - name: Scan all defaults for injection
+        run: python scripts/prompt_guard_scanner.py --scan-all
 
       - name: Upload results
-        if: always() && (github.event_name == 'workflow_dispatch' || steps.changed.outputs.any_changed == 'true')
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: prompt-guard-results
           path: prompt-guard-results.json
           retention-days: 30
           if-no-files-found: ignore
+
+  lint-defaults:
+    name: Lint default fragments
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Validate fragment format
+        run: cargo run -- lint --warnings
